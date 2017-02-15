@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.lizhenquan.honestdictionary.view.MainActivity"
+    >
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toorbar"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+        <EditText
+            android:textColorHint="#70ffffff"
+            android:hint="查询英文或中文"
+            android:id="@+id/et_search"
+            android:drawableLeft="@mipmap/search1"
+            android:padding="5dp"
+            android:singleLine="true"
+            android:inputType="text"
+            android:imeOptions="actionSearch"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:background="#2fa58b"
+            android:layout_height="wrap_content"/>
+    </android.support.v7.widget.Toolbar>
+   <com.lizhenquan.honestdictionary.wight.MyListView
+       android:layout_width="match_parent"
+       android:id="@+id/listview"
+       android:layout_height="wrap_content"></com.lizhenquan.honestdictionary.wight.MyListView>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:id="@+id/ll_contant"
+        android:layout_height="match_parent"></LinearLayout>
+</LinearLayout>
+</ScrollView>
