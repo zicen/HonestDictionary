@@ -82,7 +82,6 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
             break;
             case R.id.iv_change:
-                 Toast.makeText(this,"我被点击了",Toast.LENGTH_SHORT).show();
                 if (!TextUtils.equals(fromLan, "auto")) {
                     int selectedItemPosition = mSpTo.getSelectedItemPosition();
                     int selectedItemPosition1 = mSpFrom.getSelectedItemPosition();
@@ -154,11 +153,9 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         switch (adapterView.getId()) {
 
             case R.id.sp_from:
-                Toast.makeText(this, "你选择了："+sp_from[i], Toast.LENGTH_SHORT).show();
                 fromLan =  sp_from[i];
             break;
             case R.id.sp_to:
-                Toast.makeText(this, "你选择了："+sp_to[i], Toast.LENGTH_SHORT).show();
                 toLan =  sp_to[i];
                 break;
             default:
