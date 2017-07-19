@@ -1,4 +1,4 @@
-package com.lizhenquan.honestdictionary.view;
+package com.lizhenquan.honestdictionary.view.fragment;
 
 import android.view.View;
 

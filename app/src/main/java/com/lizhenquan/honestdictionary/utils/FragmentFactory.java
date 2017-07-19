@@ -1,9 +1,9 @@
 package com.lizhenquan.honestdictionary.utils;
 
-import com.lizhenquan.honestdictionary.view.BaseFragment;
-import com.lizhenquan.honestdictionary.view.FindFragment;
-import com.lizhenquan.honestdictionary.view.HomeFragment;
-import com.lizhenquan.honestdictionary.view.MineFragment;
+import com.lizhenquan.honestdictionary.view.fragment.BaseFragment;
+import com.lizhenquan.honestdictionary.view.fragment.FindFragment;
+import com.lizhenquan.honestdictionary.view.fragment.HomeFragment;
+import com.lizhenquan.honestdictionary.view.fragment.MineFragment;
 
 /**
  * Created by lizhenquan on 2017/1/17.

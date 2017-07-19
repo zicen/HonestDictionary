@@ -65,6 +65,14 @@ public class BaiduBean {
         public void setDst(String dst) {
             this.dst = dst;
         }
+
+        @Override
+        public String toString() {
+            return "TransResultBean{" +
+                    "src='" + src + '\'' +
+                    ", dst='" + dst + '\'' +
+                    '}';
+        }
     }
 
     @Override

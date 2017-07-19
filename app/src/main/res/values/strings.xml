@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">老实单词</string>
+    <string name="baidu_translate">百度翻译</string>
+    <string name="biying_translate">必应翻译</string>
+    <string name="title_activity_biying_translate">BiyingTranslateActivity</string>
+    <string name="success">success</string>
+    <string name="error">error</string>
 </resources>

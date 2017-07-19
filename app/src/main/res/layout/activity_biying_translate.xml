@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.lizhenquan.honestdictionary.view.activity.BiyingTranslateActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/content_biying_translate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.lizhenquan.honestdictionary.view.activity.BiyingTranslateActivity"
+        tools:showIn="@layout/activity_biying_translate">
+
+
+
+        <LinearLayout
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            >
+
+            <TextView
+                android:id="@+id/txt_lang"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:gravity="center"
+                />
+
+            <ImageView
+                android:src="@mipmap/icon_traslator_switch"
+                android:id="@+id/img_exchange_lang"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/txt_lang_target"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+        <FrameLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="158dp">
+            <EditText
+                android:id="@+id/et_translate_text"
+                android:enabled="true"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:maxLength="250"
+                android:imeOptions="actionSearch"
+                android:scrollbars="vertical"
+                android:maxLines="5"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_chooseleng_single"/>
+
+
+            <TextView
+                android:id="@+id/txt_textnumber"
+                android:layout_width="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:text="200"
+                android:layout_marginBottom="2dp"
+                android:layout_marginRight="5dp"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/img_voice"
+                android:layout_width="wrap_content"
+                android:src="@mipmap/icon_traslator_speaker"
+                android:layout_gravity="bottom|left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="wrap_content"/>
+        </FrameLayout>
+        <FrameLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="158dp">
+            <EditText
+                android:id="@+id/et_translate_result"
+                android:enabled="true"
+                android:gravity="top"
+                android:focusable="false"
+                android:editable="false"
+                android:inputType="textMultiLine"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:maxLength="250"
+                android:scrollbars="vertical"
+                android:maxLines="5"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_chooseleng_single"/>
+            <ImageView
+                android:id="@+id/img_voice_result"
+                android:layout_width="wrap_content"
+                android:src="@mipmap/icon_traslator_speaker"
+                android:layout_gravity="bottom|left"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="wrap_content"/>
+        </FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:paddingLeft="20dp"
+            android:text="History"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLine"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            ></android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+
+
+
+
+</android.support.design.widget.CoordinatorLayout>

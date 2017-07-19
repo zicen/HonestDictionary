@@ -1,4 +1,4 @@
-package com.lizhenquan.honestdictionary.view;
+package com.lizhenquan.honestdictionary.view.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -32,30 +32,32 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SecondActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class BaiduTranslateActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     @Bind(R.id.sp_from)
-    Spinner      mSpFrom;
+    Spinner mSpFrom;
     @Bind(R.id.iv_change)
-    ImageView    mIvChange;
+    ImageView mIvChange;
     @Bind(R.id.sp_to)
-    Spinner      mSpTo;
+    Spinner mSpTo;
     @Bind(R.id.toorbar)
-    Toolbar      mToorbar;
+    Toolbar mToorbar;
     @Bind(R.id.et_word)
-    EditText     mEtWord;
+    EditText mEtWord;
     @Bind(R.id.btn_search)
-    Button       mBtnSearch;
+    Button mBtnSearch;
     @Bind(R.id.tv_result)
-    TextView     mTvResult;
+    TextView mTvResult;
     @Bind(R.id.activity_second)
     LinearLayout mActivitySecond;
     @Bind(R.id.tv_result2)
-    TextView     mTvResult2;
-    private String sp_from[] = {"auto","en","zh"};
-    private String sp_to[] = {"en","zh"};
-    private String fromLan ;
+    TextView mTvResult2;
+    private String sp_from[] = {"auto", "en", "zh"};
+    private String sp_to[] = {"en", "zh"};
+    private String fromLan;
     private String toLan;
+    private String TAG = BaiduTranslateActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +69,9 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
     private void initView() {
         mBtnSearch.setOnClickListener(this);
-      mSpTo.setOnItemSelectedListener(this);
+        mSpFrom.setSelection(0);
+        mSpTo.setSelection(0);
+        mSpTo.setOnItemSelectedListener(this);
         mSpFrom.setOnItemSelectedListener(this);
         mIvChange.setOnClickListener(this);
     }
@@ -77,16 +81,16 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         switch (view.getId()) {
 
             case R.id.btn_search:
-                String text = mEtWord.getText().toString();
+                String text = mEtWord.getText().toString().trim();
                 search(text);
 
-            break;
+                break;
             case R.id.iv_change:
                 if (!TextUtils.equals(fromLan, "auto")) {
                     int selectedItemPosition = mSpTo.getSelectedItemPosition();
                     int selectedItemPosition1 = mSpFrom.getSelectedItemPosition();
-                    mSpFrom.setSelection(selectedItemPosition+1);
-                    mSpTo.setSelection(selectedItemPosition1-1);
+                    mSpFrom.setSelection(selectedItemPosition + 1);
+                    mSpTo.setSelection(selectedItemPosition1 - 1);
                 }
                 break;
             default:
@@ -95,6 +99,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         }
 
     }
+
     private Map<String, String> buildParams(String query, String from, String to) throws UnsupportedEncodingException {
         Map<String, String> params = new HashMap<String, String>();
         params.put("q", query);
@@ -112,39 +117,44 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         params.put("sign", MD5.md5(src));
         return params;
     }
+
     private void search(String text) {
         Map<String, String> map1 = null;
         try {
-            map1 = buildParams(text, fromLan,toLan);
+            map1 = buildParams(text, fromLan, toLan);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         RetrofitUtil.getAPIRetrofitInstance2().getBaiduJsonString(map1).enqueue(new Callback<BaiduBean>() {
-                @Override
-                public void onResponse(Call<BaiduBean> call, Response<BaiduBean> response) {
-                    if (response.isSuccessful()) {
-                        BaiduBean body = response.body();
-                        List<BaiduBean.TransResultBean> trans_result = body.getTrans_result();
-                        if (trans_result != null) {
-                            for (int i = 0; i < trans_result.size(); i++) {
-                                BaiduBean.TransResultBean transResultBean = trans_result.get(i);
-                                String dst = transResultBean.getDst();
-                                String src = transResultBean.getSrc();
-                                mTvResult.setText("源语言："+"\n"+src);
-                                mTvResult2.setText("翻译："+"\n"+dst);
-                            }
-                        } else {
-                            Toast.makeText(SecondActivity.this, "请输入后再进行查询！", Toast.LENGTH_SHORT).show();
-                        }
+            @Override
+            public void onResponse(Call<BaiduBean> call, Response<BaiduBean> response) {
 
+                BaiduBean body = response.body();
+                Log.e(TAG,"BaiduBean:"+body.toString());
+                if (body != null) {
+                    List<BaiduBean.TransResultBean> trans_result = body.getTrans_result();
+                    Log.e(TAG,"TransResultBean:"+trans_result.toString());
+                    if (trans_result != null) {
+                        for (int i = 0; i < trans_result.size(); i++) {
+                            BaiduBean.TransResultBean transResultBean = trans_result.get(i);
+                            String dst = transResultBean.getDst();
+                            String src = transResultBean.getSrc();
+                            mTvResult.setText("源语言：" + "\n" + src);
+                            mTvResult2.setText("翻译：" + "\n" + dst);
+                        }
+                    } else {
+                        Toast.makeText(BaiduTranslateActivity.this, "请输入后再进行查询！", Toast.LENGTH_SHORT).show();
                     }
                 }
 
-                @Override
-                public void onFailure(Call<BaiduBean> call, Throwable t) {
-                    Log.d("error", t.toString());
-                }
-            });
+
+            }
+
+            @Override
+            public void onFailure(Call<BaiduBean> call, Throwable t) {
+                Log.d("error", t.toString());
+            }
+        });
 
     }
 
@@ -153,10 +163,10 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         switch (adapterView.getId()) {
 
             case R.id.sp_from:
-                fromLan =  sp_from[i];
-            break;
+                fromLan = sp_from[i];
+                break;
             case R.id.sp_to:
-                toLan =  sp_to[i];
+                toLan = sp_to[i];
                 break;
             default:
                 break;

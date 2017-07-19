@@ -1,4 +1,4 @@
-package com.lizhenquan.honestdictionary.view;
+package com.lizhenquan.honestdictionary.view.activity;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
@@ -19,6 +19,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.lizhenquan.honestdictionary.R;
 import com.lizhenquan.honestdictionary.utils.FragmentFactory;
+import com.lizhenquan.honestdictionary.view.fragment.BaseFragment;
 
 import java.io.File;
 import java.io.FileOutputStream;

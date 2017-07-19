@@ -1,4 +1,4 @@
-package com.lizhenquan.honestdictionary.view;
+package com.lizhenquan.honestdictionary.view.activity;
 
 import android.app.ProgressDialog;
 import android.database.Cursor;
